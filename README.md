@@ -1,2 +1,103 @@
-# router
-A Python-based network security suite for ARP spoofing, DNS monitoring, and packet analysis using Scapy.
+## ROUTER: Network Security & Traffic Analysis Suite
+
+NetToolkit is a Python-based network security project I built to better understand how local networks work and how common attack techniques operate in practice.
+The goal of this toolkit is educational: to explore concepts like ARP spoofing, Man-in-the-Middle (MITM) attacks, packet sniffing, and traffic analysis in a controlled lab environment.
+This project focuses on learning by building — not just using tools, but understanding what happens behind the scenes.
+
+## 🚀 Features
+🔎 Network Scanner
+
+Discovers active devices on the local network using ARP requests.
+It helps identify hosts, IP addresses, and MAC addresses within the subnet.
+
+## 🔁 ARP Poisoning (MITM)
+
+Implements ARP spoofing to redirect traffic between a target device and the gateway.
+This demonstrates how Man-in-the-Middle attacks manipulate ARP tables.
+
+## 🌐 DNS Monitor
+
+Monitors DNS queries in real time to observe which domains a target machine is requesting.
+
+## 🔐 Credential Auditing
+
+Captures unencrypted HTTP traffic to detect potential login data and visited URLs.
+(This only works on HTTP — not HTTPS — which highlights why encryption matters.)
+
+## 🧭 IP Forwarding Automation
+
+Includes automated PowerShell integration to enable IP forwarding on Windows systems for proper traffic routing during MITM testing.
+
+## 🛠️ Project Structure
+File	Tool Name	Description
+main.py	NetToolkit	Main CLI interface to run scanning, spoofing, and sniffing together
+lanlord.py	LAN Lord	ARP spoofer with integrated DNS monitoring
+dns.py	DNS Monitor	Standalone DNS query monitoring tool
+scanner.py	Net Scanner	Simple ARP-based network discovery script
+sniffer.py	HTTP Sniffer	Packet sniffer focused on HTTP traffic and POST data
+
+## 📋 Prerequisites
+
+Python 3.x
+
+Scapy library
+
+pip install scapy
+
+Npcap (required for Windows packet capture)
+
+Administrative privileges
+
+Run as Administrator (Windows)
+
+Run as root (Linux)
+
+## ⚙️ Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/DenizKaraman461/router.git
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## 🚦 Usage
+
+1️⃣ Run Full Toolkit (Scan + MITM + Sniff)
+python main.py -t <Target_IP> -g <Gateway_IP> --sniff
+
+2️⃣ Network Discovery Only
+python scanner.py
+
+Lists all active devices on your local subnet.
+
+3️⃣ Passive DNS Monitoring
+python dns.py
+
+Monitors DNS queries (requires appropriate network setup such as monitor mode or hub-based environment).
+
+---
+
+## 📸 Screenshots
+
+### Network Scanning
+![Network Scanner Result](screenshots/scan_results.png)
+
+### Live DNS Monitoring
+![DNS Traffic Logs](screenshots/dns_logs.png)
+
+---
+
+## ⚖️ Legal Disclaimer
+
+This project is strictly for educational purposes and authorized testing environments only.
+Do not use this toolkit on networks or devices without explicit permission. Unauthorized network interception is illegal and unethical.
+The author assumes no responsibility for misuse.
+
+## 👨‍💻 Author
+
+Deniz Karaman
+Computer Engineering Student
+Izmir University of Economics
+GitHub: @DenizKaraman461
